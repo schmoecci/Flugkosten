@@ -5,7 +5,7 @@ from serpapi import GoogleSearch
 from datetime import datetime, timedelta
 
 # --- KONFIGURATION ---
-API_KEY = "3df690d1f9320565f59357d3a1c512f3a0bb3a080bcf3f298bfe63e96af22f94"
+API_KEY = os.environ["SERPAPI_KEY"]
 DESTINATION = "HND"    # Tokio Haneda
 CURRENCY = "EUR"
 
