@@ -25,12 +25,17 @@ jobs:
           pip install google-search-results
 
       - name: Skript ausführen
+        env:
+          SERPAPI_KEY: ${{ secrets.SERPAPI_KEY }}
         run: python start.py
 
       - name: CSV-Änderungen sichern
+        env:
+          GIT_USER_EMAIL: ${{ secrets.GIT_USER_EMAIL }}
+          GIT_USER_NAME: ${{ secrets.GIT_USER_NAME }}
         run: |
-          git config --local user.email "msberlin87@gmail.com"
-          git config --local user.name "schmoecci"
+          git config --local user.email "$GIT_USER_EMAIL"
+          git config --local user.name "$GIT_USER_NAME"
           git add *.csv
           git commit -m "data: Flugpreise aktualisiert [skip ci]" || echo "Keine Änderungen"
           git push
